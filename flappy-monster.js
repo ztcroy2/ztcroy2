@@ -14,3 +14,10 @@ function FlappyMonster(canvas) {
   // Game State
   game.currentState = INITIAL;
 }
+
+FlappyMonster.prototype.start = function() {
+
+
+
+
+}
