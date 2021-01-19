@@ -16,8 +16,45 @@ function FlappyMonster(canvas) {
 }
 
 FlappyMonster.prototype.start = function() {
+ // Base
+  var game = this;
+  
+  //start game
+  window.requestAnimationFrame(function() {
+    game.runGameLoop();
+  });
+};
 
+FlappyMonster.prototype.runGameLoop = function() {
+  // Base
+  var game = this;
 
+  // Game State
+  switch (game.currentState) {
+    case INITIAL:
+      // DRAW INITIAL SCREEN
+      game.drawInitialScreen();
+      break;
+    case GAME_PLAYING:
+      // DRAW GAME PLAYING SCREEN
+      game.drawGamePlayingScreen();
+      break;
+    case GAME_OVER:
+      // DRAW GAME OVER SCREEN
+      game.drawGameOverScreen();
+      break;
+  }
+};
+FlappyMonster.prototype.drawInitialScreen = function() {
+  // Base
+  var game = this;
+}
+FlappyMonster.prototype.drawGamePlayingScreen = function() {
+  // Base
+  var game = this;
+}
 
-
+FlappyMonster.prototype.drawGameOverScreen = function() {
+  // Base
+  var game = this;
 }
