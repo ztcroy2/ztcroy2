@@ -17,7 +17,6 @@ function GameBackground(src, canvas){
 // Create Background Image
   bg.create();
 }
-}
 
 GameBackground.prototype.create = function() {
   // Base
