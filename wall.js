@@ -15,3 +15,17 @@ function Wall(canvas) {
   wall.color = getRandomColor();
 }
 
+Wall.prototype.draw = function() {
+  // Base
+  var wall = this;
+
+  // Wall Color
+  wall.context.fillStyle = wall.color;
+
+  // Draw Upper Part
+  wall.context.fillRect(wall.x, wall.y, wall.w, wall.h);
+
+  // Draw Lower Part
+  wall.context.fillRect(wall.x, wall.h + wall.gap, wall.w, wall.canvas.height);
+
+};
