@@ -148,7 +148,7 @@ FlappyMonster.prototype.drawGamePlayingScreen = function() {
    // Draw Walls
   game.drawWalls();
 
-  console.log(game.wallFactory.walls);
+  //console.log(game.wallFactory.walls);
   
 // Draw Monster
   game.monster.draw();
