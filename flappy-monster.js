@@ -44,7 +44,6 @@ FlappyMonster.prototype.createObjects = function() {
   
   // Wall Factory
   game.wallFactory = new WallFactory(game.canvas);
-  game.wallFactory.generateWalls();
   
   // Monster
   game.monster = new Monster('monster.png', game.canvas);
@@ -61,6 +60,7 @@ FlappyMonster.prototype.bindEvents = function() {
     switch (game.currentState) {
       case INITIAL:
         game.currentState = GAME_PLAYING;
+        game.wallFactory.generateWalls();
         break;
       case GAME_PLAYING:
         game.monster.vy = -1 * game.velocity;
@@ -75,11 +75,24 @@ FlappyMonster.prototype.bindEvents = function() {
       case GAME_OVER:
         if(event.keyCode === KEY_CODE.R){
           console.log(event.keyCode);
+          game.reset();
           game.currentState = GAME_PLAYING;
         }
         break;
     }
   });
+};
+
+FlappyMonster.prototype.reset = function() {
+  // Base
+  var game = this;
+
+  // Reset States
+  game.gameScore.start = new Date();
+  game.gameScore.score = 0;
+  game.wallFactory.walls = [];
+  game.monster.x = 115;
+  game.monster.y = 115;
 };
 
 
@@ -260,8 +273,8 @@ FlappyMonster.prototype.drawGameOverScreen = function() {
 
   //text
   game.context.fillStyle = 'white';
-  game.context.font = '36px Arial';
-  game.context.fillText('Game Over :(', game.canvas.width / 2 - 100, game.canvas.height / 2);
+  game.context.font = '54px Arial';
+  game.context.fillText('Your Score : ' + game.gameScore.score, game.canvas.width / 2 - 180, game.canvas.height / 2 - 100);
   game.context.font = '24px Arial';
   game.context.fillText('Press R to Restart!', game.canvas.width / 2 - 100, game.canvas.height / 2 + 50);
 
